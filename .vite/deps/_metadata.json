@@ -1,0 +1,15 @@
+{
+  "hash": "a90d3463",
+  "configHash": "8f9ec437",
+  "lockfileHash": "08c9ea2d",
+  "browserHash": "4906338a",
+  "optimized": {
+    "matter-js": {
+      "src": "../../node_modules/matter-js/build/matter.js",
+      "file": "matter-js.js",
+      "fileHash": "39021211",
+      "needsInterop": true
+    }
+  },
+  "chunks": {}
+}

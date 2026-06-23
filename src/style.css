@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a2e;
+  font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#game-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#ui-layer .ui-screen {
+  pointer-events: auto;
+}
+
+/* ===== 通用按钮 ===== */
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #6d5dfc 0%, #4a3fd0 100%);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(109, 93, 252, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  letter-spacing: 2px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(109, 93, 252, 0.55);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.secondary {
+  background: linear-gradient(135deg, #5a6479 0%, #3d4659 100%);
+  box-shadow: 0 6px 20px rgba(90, 100, 121, 0.4);
+}
+
+/* ===== 主菜单 ===== */
+#screen-menu {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: rgba(10, 10, 30, 0.55);
+}
+
+#screen-menu .game-title {
+  font-size: 52px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 4px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 6px;
+  text-align: center;
+}
+
+#screen-menu .subtitle {
+  font-size: 18px;
+  color: #c7c9ff;
+  margin-top: -16px;
+  letter-spacing: 2px;
+}
+
+#screen-menu .high-score {
+  font-size: 22px;
+  color: #ffd966;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== 游戏内 HUD ===== */
+#screen-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#btn-pause {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#score-board {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 10px 18px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+  line-height: 1.6;
+}
+
+#score-board .label {
+  font-size: 13px;
+  color: #c7c9ff;
+  font-weight: 400;
+}
+
+#balance-board {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+#balance-board .side {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#balance-board .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+#balance-board .dot.left { background: #ff6b9d; }
+#balance-board .dot.right { background: #4dd0e1; }
+
+#balance-board .diff {
+  font-weight: 700;
+  color: #ffd966;
+}
+
+#balance-board .diff.danger { color: #ff5252; }
+
+/* ===== 暂停 / 结束弹窗 ===== */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: rgba(5, 5, 20, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.overlay .panel {
+  background: rgba(30, 30, 60, 0.95);
+  border: 2px solid rgba(167, 139, 250, 0.4);
+  border-radius: 20px;
+  padding: 40px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.overlay .panel-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+.overlay .panel-msg {
+  font-size: 18px;
+  color: #ffd966;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.overlay .panel-stats {
+  font-size: 16px;
+  color: #c7c9ff;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.overlay .btn-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ===== 文案闪现 ===== */
+#story-toast {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px 32px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(167, 139, 250, 0.6);
+  border-radius: 16px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  max-width: 80%;
+}
+
+#story-toast.show {
+  opacity: 1;
+}
+
+.hidden {
+  display: none !important;
+}

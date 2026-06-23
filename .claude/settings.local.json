@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem *)",
+      "Bash(npx tsc *)",
+      "WebSearch",
+      "WebFetch(domain:xin.18183.com)",
+      "WebFetch(domain:zh.moegirl.tw)",
+      "WebFetch(domain:www.yeshen.com)",
+      "WebFetch(domain:baike.baidu.com)",
+      "Bash(npm run *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
