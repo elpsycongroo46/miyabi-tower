@@ -117,6 +117,7 @@ export class UIManager {
           <button class="btn" id="btn-resume">继续游戏</button>
           <button class="btn secondary" id="btn-exit">退出游戏</button>
         </div>
+        <div style="font-size:11px;color:#888;margin-top:10px;text-align:center">本作品为粉丝自制同人小游戏，仅供娱乐，所有素材版权归米哈游（HoYoverse）所有。</div>
       </div>
     `;
     this.layer.appendChild(el);
@@ -136,6 +137,7 @@ export class UIManager {
         <div class="panel-msg" id="go-msg"></div>
         <div class="panel-stats" id="go-stats"></div>
         <button class="btn" id="btn-restart-go">重新开始</button>
+        <div style="font-size:11px;color:#888;margin-top:10px;text-align:center">本作品为粉丝自制同人小游戏，仅供娱乐，所有素材版权归米哈游（HoYoverse）所有。</div>
       </div>
     `;
     this.layer.appendChild(el);
@@ -169,6 +171,7 @@ export class UIManager {
         <div class="panel-title">恭喜完成修行！</div>
         <div class="panel-stats" id="win-stats"></div>
         <button class="btn" id="btn-restart-win">重新开始</button>
+        <div style="font-size:11px;color:#888;margin-top:10px;text-align:center">本作品为粉丝自制同人小游戏，仅供娱乐，所有素材版权归米哈游（HoYoverse）所有。</div>
       </div>
     `;
     this.layer.appendChild(el);
