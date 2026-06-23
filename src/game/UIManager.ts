@@ -49,7 +49,7 @@ export class UIManager {
     el.id = 'screen-menu';
     el.className = 'ui-screen';
     el.innerHTML = `
-      <div class="game-title">星见雅的双耳高塔</div>
+      <div class="game-title">今天是提升身高的修行</div>
       <div class="subtitle">物理叠叠乐 · 保持平衡，叠向天空</div>
       <div class="high-score" id="menu-highscore">历史最高身高：0 cm</div>
       <button class="btn" id="btn-start">开始游戏</button>
